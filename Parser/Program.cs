@@ -11,8 +11,16 @@ namespace Parser
         {
             ICardStoreParser<StoreCard> cardParser = new DefaultCardStoreParser<StoreCard>();
             Console.WriteLine("Start parsing...");
-            await cardParser.ParseSite("https://www.toy.ru/catalog/boy_transport/", "https://www.toy.ru","Ростов-на-Дону", @"C:\\Users\KP\Desktop\csv_file.csv");
-            Console.WriteLine("Done!");
+            try
+            {
+                await cardParser.ParseSite("https://www.toy.ru/catalog/boy_transport/", "https://www.toy.ru", "Ростов-на-Дону", @"C:\\Users\KP\Desktop\csv_file.csv");
+                Console.WriteLine("Done!");
+            }
+            catch(Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(e.Message);
+            }
             Console.ReadLine();
 
         }
